@@ -1,25 +1,21 @@
 'use strict'
-let codeOfVehicle = {
-    1: "car",
-    2: "motorbike",
-    3: "caravan",
-    4: "bike"
-}
-   
+const vehicleTypes = ['car', 'motorbike', 'caravan', 'bike'];
 
-let vehicle = function (color, code, age) { 
-    let vehicleName = codeOfVehicle[code]; 
-    
-    let ageStatus = age <= 1 ? ' new' : ' used';
-    return 'a ' + color + ageStatus + ' '+vehicleName;
-};
-console.log(vehicle('blue', 1, 5));
-// Change the function vehicle to use the list of question 7. So that vehicle("green", 3, 1) prints "a green new caravan".
-console.log(vehicle('green', 3, 1));
-// print something like: "Amazing Joe's Garage, we service cars, motorbikes, caravans and bikes.".
+function advertise1(types) {
+  let message = 'Amazing Joe\'s Garage, we service ';
 
-console.log("Amazing Joe's Garage, we service ");
-for (let i = 1; i < 4; i++) {
-    console.log(codeOfVehicle[i] + "s,"); 
+  const firstTypes = types.slice(0, -1);
+  const lastType = types.slice(-1);
+
+  for (let i = 0; i < firstTypes.length; i++) {
+    message += i > 0 ? ', ' : '';
+    message += firstTypes[i] + 's';
+  }
+
+  message += ' and ' + lastType + 's.';
+
+  console.log(message);
 }
-console.log(codeOfVehicle[4]+"s.");
+
+// Amazing Joe's Garage, we service cars, motorbikes, caravans and bikes.
+advertise1(vehicleTypes);
